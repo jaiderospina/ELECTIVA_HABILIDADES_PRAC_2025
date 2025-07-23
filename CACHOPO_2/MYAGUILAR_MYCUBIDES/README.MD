@@ -7,10 +7,11 @@
 
 Aprender a realizar un análisis ofensivo de una máquina tipo CTF a través de técnicas de reconocimiento, enumeración, explotación y escalamiento de privilegios, utilizando herramientas disponibles en **Kali Linux** dentro de un entorno virtualizado con **VMware**.
 
+---
 
-## Reconocimiento
+## 🕵️‍♂️ Reconocimiento
 
-(images/a.png)
+![Escaneo de red con Nmap](images/a.png)
 
 
 bash
@@ -28,17 +29,19 @@ nmap -sS -sV -T4 -Pn 192.168.184.2 -oN scans/scan_192.168.184.2.txt
 
 ### Conexión SSH
 
-(images/b.png)
+![SSH](images/b.png)
 
 ### Explotación Inicial
 
-(images/c.png)
+![EXPLOIT](images/c.png)
 
 ### Creación del diccionario y ataque de fuerza bruta con hydra
 
-(images/d.png)
+![fuerza bruta](images/d.png)
 
+### Se encuentra la contraseña
 
+![password](images/e.png)
 
 
 
