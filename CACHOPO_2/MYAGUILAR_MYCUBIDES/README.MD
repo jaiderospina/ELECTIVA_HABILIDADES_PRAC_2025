@@ -13,7 +13,7 @@ Aprender a realizar un análisis ofensivo de una máquina tipo CTF a través de 
 
 ## Reconocimiento
 
-![crea la carpeta antes Ejecuta este comando para crear la estructura de carpetas necesarias](IMAGES/a.png
+![crea la carpeta antes ](IMAGES/a.png
 
 
 bash
