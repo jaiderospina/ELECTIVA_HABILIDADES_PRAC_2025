@@ -23,6 +23,8 @@ crunch 5 5 -t E@@@@ -o diccionario1.txt
 | `-t E@@@@`          | Patrón (template): `E` fijo + 4 letras (`@` = letras minúsculas)             |
 | `-o diccionario1.txt` | Archivo de salida donde se guardará el diccionario generado               |
 
+<img width="919" height="653" alt="image" src="https://github.com/user-attachments/assets/c3fa2650-f8a6-4ca1-98e3-0f6679f727a7" />
+
 **********
 ---
 
@@ -52,6 +54,9 @@ hydra -l legion -P /home/kali/diccionario1.txt -t 10 -f -V ssh://localhost:2222
 - **Usuario**: `legion`  
 - **Password**: `Esdeg`
 
+<img width="802" height="269" alt="image" src="https://github.com/user-attachments/assets/60001171-a8b6-4ddb-b985-be0a12482e18" />
+
+
 ************
 ---
 
@@ -71,8 +76,10 @@ ssh legion@localhost -p 2222
 | `legion@localhost`   | Indica el usuario objetivo (`legion`) y el host remoto (`localhost`).                        |
 | `-p 2222`            | Especifica que la conexión se realizará por el puerto `2222` en lugar del 22 por defecto.    |
 
+
+<img width="783" height="243" alt="image" src="https://github.com/user-attachments/assets/d97565ea-aad3-402d-8877-6aaae4054d92" />
+
 ****************
 ---
 
-**Fin del taller.**
 
