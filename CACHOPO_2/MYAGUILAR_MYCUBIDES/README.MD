@@ -11,9 +11,39 @@ Aprender a realizar un análisis ofensivo de una máquina tipo CTF a través de 
 
 ---
 
-
-
-## 🔍 Fase 1: Reconocimiento
+## Reconocimiento
 
 ![crea la carpeta antes Ejecuta este comando para crear la estructura de carpetas necesarias](IMAGES/a.png
+
+
+bash
+Copiar
+Editar
+cd ~/Cachopo
+Y ahora sí puedes correr el escaneo sin problemas:
+
+bash
+Copiar
+Editar
+nmap -sS -sV -T4 -Pn 192.168.184.2 -oN scans/scan_192.168.184.2.txt
+
+> Comprueba si la máquina objetivo está activa.
+
+### Conexión SSH
+
+![](IMAGES/b.png
+
+### Explotación Inicial
+
+![uso de herramienta Hydra](IMAGES/c.png
+
+### Creación del diccionario y ataque de fuerza bruta con hydra
+
+![](IMAGES/d.png
+
+### 
+
+![](IMAGES/d.png
+
+![](IMAGES/d.png
 
