@@ -7,20 +7,17 @@
 
 Aprender a realizar un análisis ofensivo de una máquina tipo CTF a través de técnicas de reconocimiento, enumeración, explotación y escalamiento de privilegios, utilizando herramientas disponibles en **Kali Linux** dentro de un entorno virtualizado con **VMware**.
 
-> ⚠️ **Este ejercicio tiene fines exclusivamente educativos. No debe ser utilizado en sistemas sin autorización.**
-
----
 
 ## Reconocimiento
 
-(images/a.png
+(images/a.png)
 
 
 bash
 Copiar
 Editar
 cd ~/Cachopo
-Y ahora sí puedes correr el escaneo sin problemas:
+
 
 bash
 Copiar
@@ -31,15 +28,15 @@ nmap -sS -sV -T4 -Pn 192.168.184.2 -oN scans/scan_192.168.184.2.txt
 
 ### Conexión SSH
 
-(images/b.png
+(images/b.png)
 
 ### Explotación Inicial
 
-![uso de herramienta Hydra](images/c.png
+(images/c.png)
 
 ### Creación del diccionario y ataque de fuerza bruta con hydra
 
-(images/d.png
+(images/d.png)
 
 
 
