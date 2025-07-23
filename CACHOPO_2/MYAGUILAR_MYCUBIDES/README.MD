@@ -15,4 +15,5 @@ Aprender a realizar un análisis ofensivo de una máquina tipo CTF a través de 
 
 ## 🔍 Fase 1: Reconocimiento
 
-![Texto alternativo](a.png)
+![crea la carpeta antes Ejecuta este comando para crear la estructura de carpetas necesarias](IMAGES/a.png
+
