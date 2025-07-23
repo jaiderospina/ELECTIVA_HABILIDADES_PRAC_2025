@@ -13,7 +13,7 @@ Aprender a realizar un análisis ofensivo de una máquina tipo CTF a través de 
 
 ## Reconocimiento
 
-![crea la carpeta antes ](images/a.png
+(images/a.png
 
 
 bash
@@ -31,7 +31,7 @@ nmap -sS -sV -T4 -Pn 192.168.184.2 -oN scans/scan_192.168.184.2.txt
 
 ### Conexión SSH
 
-![](images/b.png
+(images/b.png
 
 ### Explotación Inicial
 
@@ -39,11 +39,9 @@ nmap -sS -sV -T4 -Pn 192.168.184.2 -oN scans/scan_192.168.184.2.txt
 
 ### Creación del diccionario y ataque de fuerza bruta con hydra
 
-![](images/d.png
+(images/d.png
 
-### 
 
-![](images/d.png
 
-![](images/d.png
+
 
