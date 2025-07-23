@@ -91,12 +91,19 @@ PORT   STATE SERVICE VERSION
 stegcracker imagen.jpg /usr/share/wordlists/rockyou.txt
 ```
 
+![Stegcraker](Images/stegcraker_cachopo.png)
+
 **Contraseña obtenida**: `doggies`
 
+- Usando la clave obtenida se puede acceder a la informacion cifrada mediante esteganografia, encontrando el archivo `directorio.txt`.
+- Se verifica el contenido del archivo y se encuentra informacion de interes para continuar con el descubrimiento.
+
+![Cocineros Dir](Images/mycachopo.png)
+  
 - Se extrajo un archivo oculto desde la imagen.
 - Dentro, se encontró un archivo llamado `Cocineros`.
 
-![Go Buster](Images/stegcraker_cachopo.png)
+![Cocineros Dir](Images/cocineros_dir.png)
 
 ---
 
@@ -108,19 +115,26 @@ stegcracker imagen.jpg /usr/share/wordlists/rockyou.txt
 file Cocineros
 ```
 
-→ Se detectó como archivo `.docx`.
+→ Se detectó como archivo `.CDFV2 cifrado` encontrando que es un documento compuesto de Offices.
+
+
 
 ### Extracción de hash con `office2john`
 
+→ Al ser un documento de Office cifrado, se utiliza John The Ripper para obtener el hash y poder usuar fuerza bruta para decifrar la contraseña.
+
 ```bash
-office2john Cocineros > hash.txt
+office2john Cocineros > cdf.hash
 ```
 
 ### Ataque de fuerza bruta
 
+![hashcat](Images/hashcat_Cocineros.png)
+
 ```bash
-john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+hashcat -m 9400 -a 0 cdf.hash /usr/share/wordlists/rockyou.txt -o pass.txt --outfile-format=2
 ```
+![Clave con hashcat](Images/clave_cocineros.png)
 
 **Contraseña recuperada**: `horse1`
 
@@ -128,39 +142,62 @@ john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
 ## 5. Análisis del Documento
 
-- Al abrir el documento (`Cocineros.docx`) con LibreOffice, se encontraron **tres nombres**.
+- Al abrir el documento (`Cocineros.docx`) con LibreOffice, se encontraron **tres nombres**, potenciales usuarios en la maquina.
+
+![Cocineros](Images/Cocineros_users.png)
 
 Estos se usaron como posibles usuarios para ataque SSH:
 
 ```bash
-hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://10.0.2.20 -t 4
+hydra -l carlos -P /usr/share/wordlists/rockyou.txt ssh://192.168.101.128 -t 4
+hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://192.168.101.128 -t 4
+hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ssh://192.168.101.128 -t 4
 ```
+
+
+![Hydra Carlos](Images/hydra_carlos.png)
+
+Se obtienen credenciales del usuario carlos. 
+
+![Hydra Luis](Images/hydra_luis.png)
+
+![Hydra Sofia](Images/hydra_sofia.png)
+
 
 ---
 
 ## 6. Acceso a SSH
 
-Una vez hallado el usuario y contraseña correctos, se accedió al sistema vía SSH:
+Se logra tener acceso a la maquina atraves de SSH, con las credenciales obtenidas anteriormente
 
-```bash
-ssh usuario@10.0.2.20
-```
+![SSH Carlos](Images/ssh_carlos.png)
+
+Logrando asi obtener el flag de usuario
+
+![Flag Carlos](Images/flag_user.png)
 
 ---
 
 ## 7. Escalada de Privilegios
 
-### Ver comandos con `sudo`:
+### Ver permisos que puede ejecutar carlos dentro de `sudoers`:
 
 ```bash
 sudo -l
 ```
 
-- Se identificó un **binario vulnerable** con permisos sudo.
+- Se identificó un **binario vulnerable** con permisos sudo y sin uso de contraseña.
+
+![crash Help](Images/crash_help.png)
 
 ### Ejecución del binario vulnerable
 
+![crash Exe](Images/crash_exe.png)
+
 - Al ejecutarlo, se logró acceso a **root** gracias a una mala configuración de permisos.
+- Con los permisos de root, se puede explorar los archivos y encontrar finalmente el flag de root.
+
+![Flag root](Images/flag_root.png)
 
 ---
 
@@ -177,8 +214,9 @@ Este CTF nos permitió aplicar varias técnicas clave de pentesting:
 
 ---
 
-## 📷 Evidencia
+## 📷 CTF completo, encontrando los dos flags requeridos
 
+![CTF completos](Images/ctf_completo.png)
 
 
 
