@@ -9,7 +9,7 @@ En los grupos de trabajo y guíandose por este ejemplo construir una imágen vul
 - Próposito de la imágen.
 - Reto (autenticarse al servicio).
 - Resolución del reto.
-- En clase se debe presentar el reto y ejecutarlo desde:
+- En clase ( a medidad que lo vayan terminando) se debe presentar el reto y ejecutarlo realizando:
    * Descargue de la imágen.
    * Ejecución del contenedor.
    * Creación del diccionario.
