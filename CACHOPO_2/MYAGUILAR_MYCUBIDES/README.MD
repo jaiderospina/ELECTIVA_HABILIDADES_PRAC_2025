@@ -43,5 +43,9 @@ nmap -sS -sV -T4 -Pn 192.168.184.2 -oN scans/scan_192.168.184.2.txt
 
 ![password](images/e.png)
 
+### Acceso a la máquina
+
+![access](images/f.png)
+
 
 
