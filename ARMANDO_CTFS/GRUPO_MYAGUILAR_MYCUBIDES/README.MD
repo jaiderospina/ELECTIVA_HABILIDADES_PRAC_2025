@@ -1,3 +1,3 @@
-🚩 ## Reto FTP CTF - Docker Image
+## Reto FTP CTF - Docker Image
 
 ## Creación del file + FTP
