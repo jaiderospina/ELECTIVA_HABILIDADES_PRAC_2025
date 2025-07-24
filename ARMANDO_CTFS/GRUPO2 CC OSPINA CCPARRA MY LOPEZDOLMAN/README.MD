@@ -15,6 +15,38 @@ diccionario.txt: Contiene posibles contraseñas para la fuerza bruta
 
 🐳 # 3. Dockerfile utilizado
 
+┌──(kali㉿kali)-[~]
+└─$                                   
+                                                                             
+┌──(kali㉿kali)-[~]
+└─$ 
+                                                                             
+┌──(kali㉿kali)-[~]
+└─$ sudo docker ps
+[sudo] password for kali: 
+Sorry, try again.
+[sudo] password for kali: 
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+                                                                              
+┌──(kali㉿kali)-[~]
+└─$ cd ftp_ctf
+cd: no such file or directory: ftp_ctf
+                                                                             
+┌──(kali㉿kali)-[~]
+└─$ cd ftp_ctf
+cd: no such file or directory: ftp_ctf
+                                                                             
+┌──(kali㉿kali)-[~]
+└─$ cd ftp_cft
+                                                                             
+┌──(kali㉿kali)-[~/ftp_cft]
+└─$ sudo docker build -t retoftp
+[sudo] password for kali: 
+                                                                             
+┌──(kali㉿kali)-[~/ftp_cft]
+└─$ sudo docker build -t retoftp .
+
+
 FROM ubuntu:latest
 
 # 1. Instala vsftpd y sudo
@@ -51,17 +83,20 @@ sudo docker push jjmartirojas/retoftp:1.0
 
 sudo docker run -d -p 2222:21 --name retoftp jjmartirojas/retoftp:1.0
 sdo docker ps
+
+![1](imagenes/Imagen1.png)
 # 7. Verificación del puerto
 
 nmap -p 2222 localhost
 ✅ Resultado: Puerto 2222 abierto
 
-![X](imagenes/Imagen1.png)
+![2](imagenes/Imagen2.png)
 
 
 # 8. Ataque de fuerza bruta con Hydra
 
 Diccionario
+![18](imagenes/Imagen18.png)
 Archivo diccionario.txt con contraseñas posibles:
 
 admin
