@@ -73,3 +73,13 @@ hydra -l DIEGO -P diccionario.txt ftp://localhost:2222 -t 4
 # 9. Resultado final
 
 Se logró acceder al servicio FTP creado en Docker mediante un ataque de fuerza bruta con Hydra. El entorno fue construido desde cero en un ambiente Kali Linux, incluyendo creación de contenedor, configuración de usuario y servicio, y ejecución del ataque controlado.
+
+10. Conclusión
+
+Este reto permitió integrar varias competencias:
+
+Configuración de servicios en contenedores (FTP sobre Docker).
+Publicación de imágenes en Docker Hub.
+Simulación de ataques de diccionario con herramientas como Hydra.
+Verificación de puertos y accesos mediante nmap.
+Este tipo de ejercicios son clave para entender tanto la defensiva (hardening de servicios) como la ofensiva (pentesting y auditoría).
