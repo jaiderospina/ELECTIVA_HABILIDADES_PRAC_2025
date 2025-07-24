@@ -40,7 +40,9 @@ cd ftp_ctf
 
 
 ´´´bash
+
 cd ftp_ctf
+
 ´´´
 
 Figura 1: Acceso al directorio ftp_ctf.
