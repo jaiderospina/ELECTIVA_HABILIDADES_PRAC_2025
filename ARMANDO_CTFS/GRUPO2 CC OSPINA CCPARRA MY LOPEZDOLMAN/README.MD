@@ -57,7 +57,7 @@ nmap -p 2222 localhost
 ✅ Resultado: Puerto 2222 abierto
 
 
-![Pull de imagen Docker](imagenes/Imagen 1.png)
+https://github.com/jaiderospina/ELECTIVA_HABILIDADES_PRAC_2025/blob/main/ARMANDO_CTFS/GRUPO2%20CC%20OSPINA%20CCPARRA%20MY%20LOPEZDOLMAN/imagenes/Imagen%201.png
 
 # 8. Ataque de fuerza bruta con Hydra
 
