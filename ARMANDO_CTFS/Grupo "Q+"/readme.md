@@ -35,8 +35,14 @@ En esta fase, construiremos nuestra propia imagen de Docker, la subiremos a un r
 Acceso al Directorio del Proyecto
 Nos ubicamos en la carpeta que contiene el Dockerfile y los archivos necesarios.
 
-bash
 cd ftp_ctf
+
+
+
+´´´bash
+cd ftp_ctf
+´´´
+
 Figura 1: Acceso al directorio ftp_ctf.
 
 <!-- -->
