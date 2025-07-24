@@ -12,6 +12,7 @@ Directorio de trabajo: ftp_cft
 Archivos clave:
 Dockerfile: Define la imagen Docker personalizada
 diccionario.txt: Contiene posibles contraseñas para la fuerza bruta
+
 🐳 # 3. Dockerfile utilizado
 
 FROM ubuntu:latest
