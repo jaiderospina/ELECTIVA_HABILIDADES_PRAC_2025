@@ -56,8 +56,8 @@ sdo docker ps
 nmap -p 2222 localhost
 ✅ Resultado: Puerto 2222 abierto
 
+![Diagrama del reto](escritorio/Imagen 1.png)
 
-![](Imagen 1.png)
 # 8. Ataque de fuerza bruta con Hydra
 
 Diccionario
