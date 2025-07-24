@@ -57,6 +57,7 @@ nmap -p 2222 localhost
 ✅ Resultado: Puerto 2222 abierto
 
 ![Diagrama del reto](escritorio/Imagen 1.png)
+img src="imagenes/Imagen 1.png" alt="Imagen 1"
 
 # 8. Ataque de fuerza bruta con Hydra
 
