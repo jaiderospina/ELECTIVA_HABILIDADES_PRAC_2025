@@ -38,12 +38,9 @@ Nos ubicamos en la carpeta que contiene el Dockerfile y los archivos necesarios.
 cd ftp_ctf
 
 
-
-´´´bash
-
+```dockerfile
 cd ftp_ctf
-
-´´´
+```
 
 Figura 1: Acceso al directorio ftp_ctf.
 
