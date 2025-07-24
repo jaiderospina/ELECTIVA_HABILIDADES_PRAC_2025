@@ -29,107 +29,26 @@ Este ejercicio es fundamental para comprender el ciclo de vida de un ataque en u
 
 A continuación se detalla cada fase del ejercicio, desde la preparación del entorno hasta la explotación final.
 
-## Fase 1: Creación y Despliegue del Contenedor Vulnerable
-En esta fase, construiremos nuestra propia imagen de Docker, la subiremos a un registro público (Docker Hub) y la ejecutaremos localmente.
-
-Acceso al Directorio del Proyecto
-Nos ubicamos en la carpeta que contiene el Dockerfile y los archivos necesarios.
-
-cd ftp_ctf
-
-
+## Paso 1: Crear directorio y archivo Dockerfile
+Se intentó acceder al directorio `ftp_ctf`, pero luego se identificó que el nombre correcto era `ftp_cft`. Dentro de este directorio se encuentra el archivo `Dockerfile` con la configuración del entorno FTP.
+Comando utilizado:
 ```dockerfile
-cd ftp_ctf
+cd ftp_cft
 ```
+<h1 align="center"><img width="900" height="431" alt="image" src="https://github.com/user-attachments/assets/5ace74de-4edc-4952-8d13-ac7a2f36ec71" /></h1> 
+Figura 1. Acceso al directorio de trabajo.
 
-Figura 1: Acceso al directorio ftp_ctf.
-
-<!-- -->
-Construcción de la Imagen Docker
-Creamos la imagen a partir de nuestro Dockerfile, asignándole el nombre retoftp.
-
-bash
+## Paso 2: Construcción de la imagen Docker
+Se ejecutó el comando para construir la imagen Docker a partir del archivo `Dockerfile`. La imagen se etiquetó como `retoftp`. El Dockerfile crea un servicio vsftpd con el usuario 'JOHAN' y contraseña '1234'.
+Comando utilizado:
+```dockerfile
 sudo docker build -t retoftp .
-Figura 2: Salida del comando de construcción de la imagen.
+```
+<h1 align="center"><img width="900" height="431" alt="image" src="https://github.com/user-attachments/assets/e96d3063-ade5-400b-ac02-2fe1d5dedec7" /></h1> 
+<h1 align="center"><img width="900" height="431" alt="image" src="https://github.com/user-attachments/assets/5e174813-014a-4751-8db9-cda5f105c0ed" /></h1> 
+Figura 2. Proceso de construcción de imagen Docker.
 
-<!-- ![Construcción de imagen](assets/fign** Listamos las imágenes locales para confirmar que `retoftp` fue creada correctamente. ```bash sudo docker images ``` *Figura 3: Verificación de la imagen creada en el listado de Docker.* <!-- -->
-Publicación en Docker Hub
-Para compartir o desplegar la imagen en otros sistemas, la subimos a un registro. Primero, iniciamos sesión, luego la etiquetamos y finalmente la publicamos.
 
-bash
-# Paso 4: Inicio de sesión
-sudo docker login
-
-# Paso 5: Etiquetado (tagging) y subida (push)
-sudo docker tag retoftp martinez5125/retoftp:1.0
-sudo docker push martinez5125/retoftp:1.0
-Figuras 4 y 5: Proceso de login, etiquetado y subida de la imagen.
-
-<!-- --> <!-- -->
-Ejecución del Contenedor
-Ejecutamos la imagen, mapeando el puerto 21 del contenedor al puerto 2222 de nuestra máquina anfitriona (Kali).
-
-bash
-sudo docker run -d -p 2222:21 --name retoftp martinez5125/retoftp:1.0
-Figura 6: Ejecución del comando para iniciar el contenedor.
-
-<!-- -->
-## Fase 2: Auditoría y Ataque al Servicio FTP
-Con el contenedor activo, procedemos a realizar la auditoría de seguridad.
-
-Verificación del Contenedor y Puerto
-Confirmamos que el contenedor está corriendo y qué puerto está expuesto usando docker ps y nmap.
-
-bash
-# Verificar contenedor activo
-sudo docker ps
-
-# Escanear el puerto expuesto en la máquina local
-nmap -p 2222 localhost
-Figura 7: Escaneo con Nmap que confirma el puerto 2222 abierto.
-
-<!-- -->
-Ataque de Diccionario con Hydra
-Lanzamos el ataque de fuerza bruta. Hydra intentará autenticarse con el usuario JOHAN y cada una de las contraseñas listadas en diccionario.txt.
-
-bash
-hydra -l JOHAN -P diccionario.txt ftp://localhost:2222 -t 4
-Figura 8: Hydra encuentra con éxito la contraseña correcta.
-
-<!-- -->
-🐳 Análisis del Dockerfile
-El Dockerfile es la receta para construir nuestro entorno vulnerable. A continuación, se desglosan sus directivas clave:
-
-text
-# Se utiliza una imagen base de Ubuntu
-FROM ubuntu:latest
-
-# Se actualizan los repositorios y se instala el servidor FTP (vsftpd) y sudo
-RUN apt-get update && \
-    apt-get install -y vsftpd sudo && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Se crea un nuevo usuario 'JOHAN' y se le asigna la contraseña '1234'
-RUN useradd -m -d /home/JOHAN -s /bin/bash -G sudo JOHAN && \
-    echo "JOHAN:1234" | chpasswd
-
-# Se crea y configura el archivo de configuración de vsftpd
-# Se habilitan directivas que permiten la escritura y el acceso del usuario
-RUN printf "listen=YES\nlisten_ipv6=NO\nlocal_enable=YES\nwrite_enable=YES\nchroot_local_user=YES\nallow_writeable_chroot=YES\npasv_enable=YES\npasv_min_port=30000\npasv_max_port=30009\n" > /etc/vsftpd.conf
-
-# Se exponen los puertos para la conexión FTP
-EXPOSE 21 30000-30009
-
-# Comando que se ejecutará al iniciar el contenedor para levantar el servicio FTP
-CMD ["/usr/sbin/vsftpd", "/etc/vsftpd.conf"]
-🔧 Resumen de Herramientas y Comandos
-Herramienta / Comando	Propósito en el Ejercicio	Fase
-docker build	Construye una imagen de Docker a partir de un Dockerfile.	Preparación
-docker images	Lista todas las imágenes de Docker almacenadas localmente.	Preparación
-docker push	Sube una imagen a un registro remoto como Docker Hub.	Despliegue
-docker run	Crea e inicia un contenedor a partir de una imagen.	Despliegue
-nmap	Herramienta de escaneo de redes para descubrir puertos y servicios.	Auditoría
-hydra	Herramienta para realizar ataques de fuerza bruta a servicios de red.	Ataque
 
 # 🧠 Conclusiones y Aprendizajes
 Esta práctica permitió aplicar herramientas fundamentales en ejercicios de hacking ético, destacando la importancia de dominar conceptos como la construcción de imágenes Docker, la administración de contenedores, el escaneo de servicios y la explotación mediante ataques de diccionario.
